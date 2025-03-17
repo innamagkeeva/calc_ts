@@ -2,7 +2,7 @@ export default{}
 
 type Operation = 'add'| 'multi' | 'subtract' | 'divide'
 
-function calc(operation: Operation, a: number, b: number)  {
+function calc(operation: Operation, a: number, b: number): number | string  {
   switch (operation) {
     case 'add':
       return a + b
@@ -29,7 +29,7 @@ console.log(calc('divide', 10, 2));
 
 
 
-// function calc(operation: Operation, a: number, b: number) {
+// function calc(operation: Operation, a: number, b: number): number | string {
 //   if (operation === 'add'){
 //     return a + b
 //   } else if (operation === 'subtract'){
