@@ -1,4 +1,4 @@
-export default{}
+export default {}
 
 // type Operation = 'add'| 'multi' | 'subtract' | 'divide'
 
@@ -14,11 +14,11 @@ export default{}
 //       if (b === 0){
 //       return 'делить на 0 нельзя'
 //       }
-//         return a / b 
+//         return a / b
 //     default:
 //       return 'выберите операцию'
 //   }
-  
+
 // }
 
 // console.log(calc('add', 5, 2));
@@ -26,24 +26,26 @@ export default{}
 // console.log(calc('divide', 5, 0));
 // console.log(calc('divide', 10, 2));
 
+// type ErrorCalc = 'Делить на 0 нельзя' | 'Выберите операцию'
 
-
-
-// function calc(operation: Operation, a: number, b: number): number | string {
-//   if (operation === 'add'){
+// function calc(operation: Operation, a: number, b: number): number | ErrorCalc {
+//   if (operation === 'add') {
 //     return a + b
-//   } else if (operation === 'subtract'){
+//   }
+//   if (operation === 'subtract') {
 //     return a - b
-//   } else if (operation === 'multi'){
+//   }
+//   if (operation === 'multi') {
 //     return a * b
-//   }else if (operation === 'divide'){
-//     if (b === 0){
+//   }
+//   if (operation === 'divide') {
+//     if (!b) {
 //       return 'Делить на 0 нельзя'
 //     }
 //     return a / b
-//   } else {
-//     return 'Выберите операцию'
 //   }
+
+//   return 'Выберите операцию'
 // }
 
 // console.log(calc('add', 5, 2))
@@ -51,35 +53,43 @@ export default{}
 // console.log(calc('divide', 5, 0))
 // console.log(calc('divide', 10, 2))
 
+const arr: string[] = []
 
-
-
-
-
-const arr: Tasks[] = []
-
-type Tasks = 'купить хлеб' | 'почитать' | 'убрать' | 'покушать' 
-
-function addTask (task: Tasks) {
+function addTask(task: string) {
   arr.push(task)
-  
 }
 
 addTask('почитать')
 addTask('покушать')
 addTask('убрать')
- 
-console.log(arr);
 
- function deleteTask (task: Tasks) {
-  
-  
- }
-  
- function setLocalStorage(kay: string, value: string): void {
+// console.log('после добавления:', arr)
+
+function deleteTask(task: string): void {
+  const foundIndex = arr.findIndex((item) => item === task)
+  if (foundIndex === -1) {
+    console.log('Задача не найдена')
+    return
+  }
+  arr.splice(foundIndex, 1)
+}
+
+deleteTask('убрать')
+deleteTask('умыться')
+deleteTask('запустить салют')
+
+// console.log('после удаления:', arr)
+
+function setLocalStorage(kay: string, value: string): void {
   localStorage.setItem(kay, value)
 }
 
-function removeLocalStorage (kay: string) {
+function removeLocalStorage(kay: string): void {
   localStorage.removeItem(kay)
 }
+
+function showTasks(): void {
+  console.log(arr)
+}
+
+showTasks()
